@@ -20,6 +20,7 @@ body {
   background-color:  var(--black);
   color:var(--white);
   font-family: 'Inter', sans-serif;
+  height:100vh;
 }
 
 /* for custom selection */
@@ -30,7 +31,7 @@ color:var(--white)
 
 /*  custom scrollbar */
 /* width */
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
   width: 0.5rem;
 }
 
@@ -43,7 +44,7 @@ color:var(--white)
 ::-webkit-scrollbar-thumb {
   background: var(--blue);
   border-radius: 3rem;
-}
+} 
 
 a{
   color:var(--white) !important;
