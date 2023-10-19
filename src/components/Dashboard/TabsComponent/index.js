@@ -8,8 +8,9 @@ import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/material';
 import Grid from '../Grid/index';
 import "./styles.css"
+import List from '../List';
 
-export default function TabsComponent({coins}) {
+export default function TabsComponent({coins, setSearch}) {
   const [value, setValue] = useState('grid');
 
   const handleChange = (event,newValue) => {
@@ -46,14 +47,22 @@ textTransform: "capitalize"
                 {
                     coins.map((coin,i)=>{
                         return(
-                            <Grid coin={coin} key={i+1}/>
+                            <Grid coin={coin} key={i}/>
                         )
                     })
                 }
             </Box>
         </TabPanel>
         <TabPanel value="list">
-          List
+           <table className="list-flex">
+                {
+                    coins.map((coin,i)=>{
+                        return(
+                            <List coin={coin} key={i}/>
+                        )
+                    })
+                }
+            </table>
           </TabPanel>
        
       </TabContext>

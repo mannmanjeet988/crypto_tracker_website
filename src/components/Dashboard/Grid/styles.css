@@ -49,7 +49,7 @@
     color:var(--white);
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 0.1rem;
 }
 
@@ -57,7 +57,7 @@
     color:var(--white);
     text-transform: capitalize;
     font-weight: lighter;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-top: 0;
 }
 
@@ -77,6 +77,7 @@
     font-weight: 600;
     font-size: 0.8rem;
     color:var(--green);
+    min-width:60px;
 }
 
 .red{
@@ -96,6 +97,7 @@
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
+    margin-right: 1.5rem !important;
 }
 
 .chip-red{
@@ -142,5 +144,5 @@
 
 
 
-/* https://acciojob.zoom.us/j/81116738643?pwd=FQi1H8lNHk3O3U1fGPbQblC4WfS1Zs.1 */
+
 

@@ -7,3 +7,18 @@
     gap:1.5rem;  
     padding: 1rem;
 }
+
+.list-flex{
+    width:80%;
+    display:block;  
+    margin-left:auto;
+    margin-right:auto; 
+}
+
+@media only screen and (max-width:1000px){
+.list-flex{
+    width:95%;
+}
+
+
+}

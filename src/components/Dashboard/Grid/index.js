@@ -26,7 +26,7 @@ const Grid  = ({coin}) => {
             </div>)
             :
             (<div className='chip-flex'>               
-                <div className='price-chip red'>-{coin.price_change_percentage_24h.toFixed(2)}%</div>
+                <div className='price-chip red'>{coin.price_change_percentage_24h.toFixed(2)}%</div>
                 <div className="chip-icon chip-red"><TrendingDownRoundedIcon /></div>
              </div>)
             }
