@@ -59,7 +59,7 @@ textTransform: "capitalize"
                     coins.map((coin,i)=>{
                         return(
                             <List coin={coin} key={i}/>
-                        )
+                        ) 
                     })
                 }
             </table>

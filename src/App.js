@@ -7,6 +7,7 @@ import DashboardPage from "./pages/DashboardPage"
 import MainComponent from './components/LandingPage/MainComponent';
 import { Dashboard } from '@mui/icons-material';
  import HomePage from './pages/HomePage';
+import CoinPage from './pages/CoinPage';
 
 
 
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/"  element ={<HomePage />} />
             <Route path="/dashboard" element ={<DashboardPage />} />
+            <Route path="/coin/:id" element ={<CoinPage />} />
           </Routes>
       </BrowserRouter>
     </div>

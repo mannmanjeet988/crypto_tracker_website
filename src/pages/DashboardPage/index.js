@@ -6,22 +6,20 @@ import TabsComponent from "../../components/Dashboard/TabsComponent";
 import { LineAxisOutlined } from "@mui/icons-material";
 import Search from "../../components/Dashboard/Search";
 import PaginationComponent from "../../components/Dashboard/PaginationComponent.js";
+import Loader from "../../components/Common/Loader";
+import BackToTop from "../../components/Common/BackToTop";
 
 const DashboardPage = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
+  const [isLoading, setIsLoading] =useState(true);
 
   const onSearchChange=(e)=>{
     setSearch(e.target.value)
     console.log(search)
   }
-
-  // let filteredCoins = coins.filter((coin)=>{
-  //   coin.name.toLowerCase().includes(search.trim().toLowerCase())
-  // })
-  // console.log(filteredCoins)
 
   let filteredCoins = coins.filter((coin) => {
     if (
@@ -47,23 +45,33 @@ const DashboardPage = () => {
       .then((response) => {
         console.log("RESPONSE>>>", response);
         setCoins(response.data);
-        setPaginatedCoins(coins.slice(0,10))
+        setPaginatedCoins(response.data.slice(0,10))
+        setIsLoading(false)
       })
-      .catch((error) => console.log("ERROR>>>", error));
+      .catch((error) => {
+        console.log("ERROR>>>", error);
+       setIsLoading(false)
+       });
   }, []);
 
   return (
     <div>
       <Header />
-      <Search  search={search}  onSearchChange={onSearchChange} />
-      <TabsComponent coins={search ? filteredCoins : paginatedCoins}  setSearch={setSearch} />
-      {/* <TabsComponent coins={paginatedCoins} /> */}
-      {!search && (
-            <PaginationComponent
-              page={page}
-              handlePageChange={handlePageChange}
-            />
-          )}
+      {
+        isLoading ? 
+        <Loader /> :  
+        <div>
+          <Search  search={search}  onSearchChange={onSearchChange} />
+          <TabsComponent coins={search ? filteredCoins : paginatedCoins}  setSearch={setSearch} />
+          {!search && (
+                <PaginationComponent
+                  page={page}
+                  handlePageChange={handlePageChange}
+                />
+              )}
+          {/* <BackToTop /> */}
+        </div>
+      }   
     </div>
   );
 };

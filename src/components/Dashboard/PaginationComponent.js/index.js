@@ -12,7 +12,7 @@ export default function PaginationComponent({page,handlePageChange}) {
 
   return (
     <div className='pagination-component'>
-      <Typography>Page: {page}</Typography>
+      <Typography className='page-num'>Page: <span>{page}</span></Typography>
       
       <Pagination 
       sx={{
@@ -25,7 +25,7 @@ export default function PaginationComponent({page,handlePageChange}) {
             backgroundColor: "transparent !important",
           },
           "& .Mui-selected  ": {
-            backgroundColor: "var(--blue) !iimportant",
+            backgroundColor: "var(--blue) !important",
             borderColor: "var(--blue) !important",
             color: "#fff !important",
           },

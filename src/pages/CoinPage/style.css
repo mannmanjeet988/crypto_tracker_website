@@ -1,0 +1,9 @@
+.coin-page-component{
+    background-color: var(--darkgrey);
+    margin:1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display:block;
+    width:90%;
+  }
+
