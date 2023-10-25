@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const List  = ({coin}) => {
   return (
-    <a href={`/coin/${coin.id}`}>
+    <Link to={`/coin/${coin.id}`}>
       <tr   className="list-row">
         <Tooltip title="Coin Image" placement="bottom-start">
         <td className='td-image'>
@@ -68,7 +68,7 @@ const List  = ({coin}) => {
         </Tooltip>
         
     </tr>
-    </a>
+    </Link>
   )
 }
 
