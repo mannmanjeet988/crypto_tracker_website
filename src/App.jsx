@@ -8,7 +8,7 @@ import MainComponent from './components/LandingPage/MainComponent';
 import { Dashboard } from '@mui/icons-material';
  import HomePage from './pages/HomePage';
 import CoinPage from './pages/CoinPage';
-import ComparePage from './pages/ComparePage.js';
+import ComparePage from './pages/ComparePage.js/index.js';
 import WatchListPage from './pages/Watchlist/WatchListPage';
 
 
