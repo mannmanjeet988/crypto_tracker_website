@@ -23,9 +23,12 @@ const ComparePage = () => {
   const [crypto1Data, setCrypto1Data] = useState({});
   const [crypto2Data, setCrypto2Data] = useState({});
   const [priceType, setPriceType] = useState("prices");
-  const [chartData, setChartData] = useState({});
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [],
+  });
 
-  const [days, setDays] = useState(7);
+  const [days, setDays] = useState(30);
 
   useEffect(() => {
     getData();
@@ -35,21 +38,20 @@ const ComparePage = () => {
     setIsLoading(true);
     const data1 = await getCoinData(crypto1);
     const data2 = await getCoinData(crypto2);
-    if (data1) {
-      coinObject(setCrypto1Data, data1);
-      const prices = await getCoinPrices(crypto1, days, priceType);
-    }
-    if (data2) {
-      coinObject(setCrypto2Data, data2);
-    }
+    coinObject(setCrypto1Data, data1);
+    coinObject(setCrypto2Data, data2);
     if (data1 && data2) {
       const prices1 = await getCoinPrices(crypto1, days, priceType);
       const prices2 = await getCoinPrices(crypto2, days, priceType);
-      if (prices1 && prices2) {
-        settingChartData(setChartData, prices1, prices2);
-        console.log("Both PRICES>>>", prices1, prices2);
-        setIsLoading(false);
-      }
+      settingChartData(
+        setChartData,
+        prices1,
+        prices2,
+        crypto1Data,
+        crypto2Data
+      );
+      console.log("Both PRICES>>>", prices1, prices2);
+      setIsLoading(false);
     }
   }
 
@@ -58,7 +60,7 @@ const ComparePage = () => {
     setDays(event.target.value);
     const prices1 = await getCoinPrices(crypto1, event.target.value, priceType);
     const prices2 = await getCoinPrices(crypto2, event.target.value, priceType);
-    settingChartData(setChartData, prices1, prices2);
+    settingChartData(setChartData, prices1, prices2, crypto1Data, crypto2Data);
     setIsLoading(false);
   }
 
@@ -67,7 +69,7 @@ const ComparePage = () => {
     setPriceType(newType);
     const prices1 = await getCoinPrices(crypto1, days, newType);
     const prices2 = await getCoinPrices(crypto2, days, newType);
-    settingChartData(setChartData, prices1, prices2);
+    settingChartData(setChartData, prices1, prices2, crypto1Data, crypto2Data);
     setIsLoading(false);
   };
 
@@ -76,16 +78,41 @@ const ComparePage = () => {
     if (isCrypto1) {
       setCrypto1(event.target.value);
       console.log("crypto1 id", event.target.value);
-      const data = await getCoinData(event.target.value);
-      coinObject(setCrypto1Data, data); //For Coin Obj being passed in the List
+      const data1 = await getCoinData(event.target.value);
+      coinObject(setCrypto1Data, data1); //For Coin Obj being passed in the List
+      if (data1) {       
+        const prices1 = await getCoinPrices((crypto1, days, priceType));
+        const prices2 = await getCoinPrices(crypto2, days, priceType);
+        settingChartData(
+          setChartData,
+          prices1,
+          prices2,
+          crypto1Data,
+          crypto2Data
+        );
+        console.log("CHANGED COIN PRICES 1st", prices1, prices2)
+      }
     } else {
       setCrypto2(event.target.value);
       console.log("crypto2 id", event.target.value);
-      const data = await getCoinData(event.target.value);
-      coinObject(setCrypto2Data, data); //For Coin Obj being passed in the List
+      const data2 = await getCoinData(event.target.value);
+      coinObject(setCrypto2Data, data2); //For Coin Obj being passed in the List
+      if (data2) {
+        
+        const prices1 = await getCoinPrices(crypto1, days, priceType);
+        const prices2 = await getCoinPrices(
+          (crypto2, days, priceType)
+        );
+        console.log("CHANGED COIN PRICES 2nd", prices1, prices2)
+        settingChartData(
+          setChartData,
+          prices1,
+          prices2,
+          crypto2Data,
+          crypto1Data
+        );
+      }
     }
-    const prices1 = await getCoinPrices(crypto1, days, priceType);
-    const prices2 = await getCoinPrices(crypto2, days, priceType);
     setIsLoading(false);
   }
 

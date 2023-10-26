@@ -67,6 +67,10 @@ function LineChart({ chartData, priceType, multiAxis }) {
         position:'top',
         display: multiAxis ? true: false,
       },
+      title: {
+        display: true,
+        text: 'Comparison between Crypto1 and Crypto2'
+      }
     },
     responsive: true,
     interaction: {
@@ -74,7 +78,7 @@ function LineChart({ chartData, priceType, multiAxis }) {
       intersect: false,
     },
     scales: {
-      crypto1: {
+      crypto2: {
         type: "linear",
         display: true,
         position: "right",
@@ -90,10 +94,10 @@ function LineChart({ chartData, priceType, multiAxis }) {
           },
         },
       },
-      crypto2: multiAxis && {
+      crypto1: {
         type: "linear",
         display: true,
-        position: "right",
+        position: "left",
         ticks: {
           callback: function (value) {
             if (priceType == "total_volumes") {

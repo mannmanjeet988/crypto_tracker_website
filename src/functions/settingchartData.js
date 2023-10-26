@@ -23,13 +23,13 @@ import { convertDate } from "./converDate";
 //         )
 // }
 
-export const settingChartData = (setChartData, prices1, prices2) => {
+export const settingChartData = (setChartData, prices1, prices2,crypto1Data,crypto2Data) => {
   if (prices2) {
     setChartData({
       labels: prices1?.map((data) => convertDate(data[0])),
       datasets: [
-        {
-          // label: "Crypto1",
+        {           
+          label:crypto1Data.name,
           data: prices1?.map((data) => data[1]),
           borderWidth: 1,
           fill: false,
@@ -39,8 +39,8 @@ export const settingChartData = (setChartData, prices1, prices2) => {
           pointRadius: 0,
           yAxisID: "crypto1",
         },
-        {
-         // label: "Crypto2",
+        prices2 && {
+         label:crypto2Data.name,
           data: prices2?.map((data) => data[1]),
           borderWidth: 1,
           fill: false,
@@ -56,6 +56,7 @@ export const settingChartData = (setChartData, prices1, prices2) => {
       labels: prices1?.map((data) => convertDate(data[0])),
       datasets: [
         {
+          label:"Crypto1",
           data: prices1?.map((data) => data[1]),
           borderWidth: 1,
           fill: true,
