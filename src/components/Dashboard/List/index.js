@@ -71,6 +71,8 @@ const List  = ({coin}) => {
                ${convertNumber(coin.market_cap)}
           </p>
           </td>
+          </Tooltip>
+          <Tooltip title="Add to Watchlist!" placement="bottom-end">
           <td
           className={`watchlist-icon-list ${
             coin.price_change_percentage_24h < 0 && "watchlist-icon-red-list"
@@ -88,6 +90,7 @@ const List  = ({coin}) => {
           {isCoinAdded ? <StarIcon /> : <StarOutlineIcon />}
         </td>
         </Tooltip>
+       
         
     </tr>
     </Link>

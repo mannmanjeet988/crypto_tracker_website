@@ -7,9 +7,11 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { RWebShare } from "react-web-share";
 import { toast } from "react-toastify";
+import Footer from "../../Common/Footer";
 
 function MainComponent() {
   return (
+    
     <div className="flex-box">
       <div className="left-container">
         <motion.h1
@@ -77,7 +79,10 @@ function MainComponent() {
         />
         <motion.img className="gradient" src={gradient} />
       </div>
+
     </div>
+    
+    
   );
 }
 

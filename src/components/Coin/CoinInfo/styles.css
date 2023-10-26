@@ -21,6 +21,18 @@
     text-align: left;
   }
 
+  .coin-desc  a{
+    text-decoration: underline;
+    font-weight: 500;
+    
+  }
+
+  .coin-desc  a:hover{
+    text-decoration: underline;
+    color:var(--blue);
+    transition: ease 0.3s;
+  }
+
   .list-row:hover{
     background-color: var(--darkgrey);
     transition: ease 0.3s;

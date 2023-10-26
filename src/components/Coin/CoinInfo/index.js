@@ -10,9 +10,9 @@ const CoinInfo = ({heading,desc}) => {
   return (
     <div className='coin-page-component'>
         <h2 className="coin-name-heading">{heading}</h2>
-        <p  className="coin-desc" 
+        <p  
         dangerouslySetInnerHTML={{   __html: desc.length>200 ? (flag? smallDesc : longDesc) : desc}} 
-        onClick={()=>setFlag(!flag)}></p>
+        className="coin-desc"    onClick={()=>setFlag(!flag)}></p>
     </div>
   )
 }

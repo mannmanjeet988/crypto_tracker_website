@@ -82,7 +82,7 @@ const CoinPage = () => {
               <LineChart
                 chartData={chartData}
                 priceType={priceType}
-                multiaxis={true}
+                
               />
             </div>
           </div>
